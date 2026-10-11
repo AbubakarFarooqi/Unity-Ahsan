@@ -2393,6 +2393,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2518,6 +2519,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d536b252e6cbf5e40b98ddc70586cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
 --- !u!1 &583205798
 GameObject:
   m_ObjectHideFlags: 0
@@ -5541,7 +5555,7 @@ GameObject:
   - component: {fileID: 1617896125}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5633,6 +5647,7 @@ MonoBehaviour:
   isGrounded: 0
   animator: {fileID: 0}
   rigidbody2D: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!95 &1617896123
 Animator:
   serializedVersion: 7
@@ -5720,7 +5735,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.29, y: 2.22}
+    oldSize: {x: 1.04, y: 2.24}
     newSize: {x: 1.04, y: 2.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
