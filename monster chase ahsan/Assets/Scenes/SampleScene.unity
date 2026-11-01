@@ -6078,7 +6078,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   rigidbody2D: {fileID: 0}
   spriteRenderer: {fileID: 0}
-  lives: 10
+  lives: 5
   lives_tmp: {fileID: 1236121307}
 --- !u!95 &1617896123
 Animator:

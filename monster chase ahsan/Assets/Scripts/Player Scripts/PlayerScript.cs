@@ -3,6 +3,7 @@ using TMPro;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 public class PlayerScript : MonoBehaviour
 {
     // When i am on the ground then only i can jump
@@ -35,6 +36,10 @@ public class PlayerScript : MonoBehaviour
     {
         MovePlayer();
         JumpPlayer();
+        if (lives == 0)
+        {
+            SceneManager.LoadScene("GameOverScene");
+        }
     }           
 
     void MovePlayer()
