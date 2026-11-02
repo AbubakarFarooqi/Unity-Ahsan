@@ -6080,6 +6080,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   lives: 5
   lives_tmp: {fileID: 1236121307}
+  bulletObject: {fileID: 9156230594537609779, guid: a437b51fe999b454bb3c8d5c2ed9d19c, type: 3}
 --- !u!95 &1617896123
 Animator:
   serializedVersion: 7

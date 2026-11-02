@@ -18,6 +18,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     public int lives;
     public TMP_Text lives_tmp;
+    public GameObject bulletObject;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +37,7 @@ public class PlayerScript : MonoBehaviour
     {
         MovePlayer();
         JumpPlayer();
+        ShootBullet();
         if (lives == 0)
         {
             SceneManager.LoadScene("GameOverScene");
@@ -44,13 +46,13 @@ public class PlayerScript : MonoBehaviour
 
     void MovePlayer()
     {
-        if (Keyboard.current.leftArrowKey.isPressed)
+        if (Keyboard.current.aKey.isPressed)
         {
             spriteRenderer.flipX = true;
             this.transform.Translate(-moveSpeed * Time.deltaTime,0,0);
             animator.SetBool("Walk",true);
         }
-        else if (Keyboard.current.rightArrowKey.isPressed)
+        else if (Keyboard.current.dKey.isPressed)
         {
             spriteRenderer.flipX = false;   
             this.transform.Translate(moveSpeed * Time.deltaTime,0,0);
@@ -69,6 +71,14 @@ public class PlayerScript : MonoBehaviour
             rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, jumpForce);
             animator.SetBool("Jump",true);
             isGrounded = false;
+        }
+    }
+
+    void ShootBullet()
+    {
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            var bullet = Instantiate(bulletObject);
         }
     }
 
