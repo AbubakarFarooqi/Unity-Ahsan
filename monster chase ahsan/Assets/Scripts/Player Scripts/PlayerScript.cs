@@ -19,8 +19,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     public int lives;
     public TMP_Text lives_tmp;
+    public TMP_Text scores_tmp;
     public GameObject bulletObject;
     public bool isBulletOnScreen;
+    public int scores;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,7 +34,8 @@ public class PlayerScript : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         lives_tmp.SetText("Lives: {0}", lives);
-        
+        scores = 0;
+        scores_tmp.SetText("Scores: {0}", scores);
 
     }
 
@@ -88,6 +91,8 @@ public class PlayerScript : MonoBehaviour
                 bullet.transform.position = new Vector3(this.GetComponent<BoxCollider2D>().bounds.center.x + this.GetComponent<BoxCollider2D>().bounds.extents.x-1.5f ,this.GetComponent<BoxCollider2D>().bounds.center.y,1); 
                 bullet.GetComponent<BulletScript>().moveSpeed = -6;
                 bullet.GetComponent<BulletScript>().BulletHit += BulletHitEnemy;
+                bullet.GetComponent<BulletScript>().EnemyHit += IncreaseScore;
+
             }
             else
             {
@@ -95,6 +100,8 @@ public class PlayerScript : MonoBehaviour
                 bullet.transform.position = new Vector3(this.GetComponent<BoxCollider2D>().bounds.center.x + this.GetComponent<BoxCollider2D>().bounds.extents.x+0.5f ,this.GetComponent<BoxCollider2D>().bounds.center.y,1);
                 bullet.GetComponent<BulletScript>().moveSpeed = 6;
                 bullet.GetComponent<BulletScript>().BulletHit += BulletHitEnemy;
+                bullet.GetComponent<BulletScript>().EnemyHit += IncreaseScore;
+
             }
             isBulletOnScreen = true;
             
@@ -103,6 +110,12 @@ public class PlayerScript : MonoBehaviour
     void BulletHitEnemy()
     {
         isBulletOnScreen = false;
+    }
+
+    void IncreaseScore()
+    {
+        scores++;
+        scores_tmp.SetText("Scores: {0}", scores);
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
