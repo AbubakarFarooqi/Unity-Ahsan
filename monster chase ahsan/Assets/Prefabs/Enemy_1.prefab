@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
+  bulletObject: {fileID: 6347998331017764906, guid: e95c0eccf9462944dbc3a6630129ec1f, type: 3}
+  spriteRenderer: {fileID: 0}
 --- !u!50 &3544799079691615882
 Rigidbody2D:
   serializedVersion: 5

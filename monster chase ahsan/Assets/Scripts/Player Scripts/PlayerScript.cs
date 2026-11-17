@@ -35,6 +35,7 @@ public class PlayerScript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         lives_tmp.SetText("Lives: {0}", lives);
         scores = 0;
+        ScoreStatic.score = 0;
         scores_tmp.SetText("Scores: {0}", scores);
 
     }
@@ -115,6 +116,7 @@ public class PlayerScript : MonoBehaviour
     void IncreaseScore()
     {
         scores++;
+        ScoreStatic.score = scores;
         scores_tmp.SetText("Scores: {0}", scores);
     }
     void OnCollisionEnter2D(Collision2D collision)
