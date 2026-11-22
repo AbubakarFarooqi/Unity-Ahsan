@@ -7,10 +7,14 @@ public class EnemyScript : MonoBehaviour
     public float moveSpeed;
     public GameObject bulletObject;
     public SpriteRenderer spriteRenderer;
+    public int maxBullets;
+    public int bulletsGenerated;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        maxBullets = 1;
+        bulletsGenerated = 0;
         spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(ShootBullet());
     }
@@ -31,18 +35,24 @@ public class EnemyScript : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(Random.Range(1,6));
-            if (spriteRenderer.flipX == true)
+
+            if (bulletsGenerated < maxBullets)
             {
-                var bullet = Instantiate(bulletObject);
-                bullet.transform.position = new Vector3(this.GetComponent<BoxCollider2D>().bounds.center.x + this.GetComponent<BoxCollider2D>().bounds.extents.x-1.5f ,this.GetComponent<BoxCollider2D>().bounds.center.y,1); 
-                bullet.GetComponent<EnemyBulletScript>().moveSpeed = -6;
+                bulletsGenerated = bulletsGenerated + 1;
+                if (spriteRenderer.flipX == true)
+                {
+                    var bullet = Instantiate(bulletObject);
+                    bullet.transform.position = new Vector3(this.GetComponent<BoxCollider2D>().bounds.center.x + this.GetComponent<BoxCollider2D>().bounds.extents.x-1.5f ,this.GetComponent<BoxCollider2D>().bounds.center.y,1); 
+                    bullet.GetComponent<EnemyBulletScript>().moveSpeed = -6;
+                }
+                else
+                {
+                    var bullet = Instantiate(bulletObject);
+                    bullet.transform.position = new Vector3(this.GetComponent<BoxCollider2D>().bounds.center.x + this.GetComponent<BoxCollider2D>().bounds.extents.x+0.5f ,this.GetComponent<BoxCollider2D>().bounds.center.y,1);
+                    bullet.GetComponent<EnemyBulletScript>().moveSpeed = 6;
+                }
             }
-            else
-            {
-                var bullet = Instantiate(bulletObject);
-                bullet.transform.position = new Vector3(this.GetComponent<BoxCollider2D>().bounds.center.x + this.GetComponent<BoxCollider2D>().bounds.extents.x+0.5f ,this.GetComponent<BoxCollider2D>().bounds.center.y,1);
-                bullet.GetComponent<EnemyBulletScript>().moveSpeed = 6;
-            }
+            
         }
         
         

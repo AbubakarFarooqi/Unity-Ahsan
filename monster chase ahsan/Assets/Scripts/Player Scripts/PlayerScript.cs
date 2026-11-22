@@ -26,8 +26,6 @@ public class PlayerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        moveSpeed = 6;
-        jumpForce = 6;
         isGrounded = true;
         isBulletOnScreen = false;
         animator = GetComponent<Animator>(); 
@@ -125,6 +123,12 @@ public class PlayerScript : MonoBehaviour
         {
             isGrounded = true;
             animator.SetBool("Jump",false);
+        }
+        if (collision.collider.CompareTag("EnemyBullet"))  
+        {
+            lives--;
+            lives_tmp.SetText("Lives: {0}", lives);
+            Destroy(collision.gameObject);
         }
     }
     void OnTriggerEnter2D(Collider2D other)

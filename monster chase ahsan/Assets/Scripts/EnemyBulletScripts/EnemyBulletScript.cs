@@ -29,4 +29,12 @@ public class EnemyBulletScript : MonoBehaviour
     {
         this.transform.Translate(moveSpeed * Time.deltaTime,0,0);
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Barrier"))//whether player is touching any object tht has tag ground    
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
